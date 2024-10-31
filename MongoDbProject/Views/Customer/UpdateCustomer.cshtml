@@ -1,0 +1,38 @@
+﻿@model MongoDbProject.Dtos.CustomerDtos.GetByIdCustomerDto
+@{
+    ViewData["Title"] = "UpdateCustomer";
+    Layout = "~/Views/Shared/_MongoLayout.cshtml";
+}
+
+<div class="col-lg-12">
+    <div class="card">
+        <div class="card-body">
+            <div class="card-title">Müşteri  Güncelleme</div>
+            <hr>
+            <form method="post"> 
+                <input type="hidden" asp-for="CustomerId" />
+                <div class="form-group">
+                    <label for="input-6">Ad Soyad</label>
+                    <input type="text" class="form-control form-control-rounded" asp-for="CustomerNameSurname" placeholder="Lütfen Ad Soyadınızı giriniz">
+                </div>
+                <div class="form-group">
+                    <label for="input-7">Şehir</label>
+                    <input type="text" class="form-control form-control-rounded" asp-for="CustomerCity" placeholder="Lütfen Şehirinizi Giriniz">
+                </div>
+                <div class="form-group">
+                    <label for="input-8">Telefon</label>
+                    <input type="text" class="form-control form-control-rounded" asp-for="CustomerPhone" placeholder="Lütfen Telefon Numaranızı Giriniz">
+                </div>
+                <div class="form-group">
+                    <label for="input-9">Mail Adresi</label>
+                    <input type="text" class="form-control form-control-rounded" asp-for="CustomerMail" placeholder="Lütfen Mail Adresinizi Giriniz">
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-light btn-round px-5"><i class="icon-lock"></i>Müşteriyi   Güncelle</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
