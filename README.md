@@ -49,3 +49,57 @@ Settings içerisinde yazdığımız settingsleri appsettings.json içerisinde i�
 - AutoMapper Kütüphanemizi Projemize yükliyelim.
 - ![Ekran Görüntüsü (276)](https://github.com/user-attachments/assets/67a2bc4c-2280-49a0-84b5-0e30416b2b82)
 Product ve Category  sınıflarımızla Dtoslarımızı Mappleyelim.
+## -services 
+![Ekran Görüntüsü (278)](https://github.com/user-attachments/assets/2c692d69-f9c0-4d36-8b1e-71361aab0d7d)
+- İnterfaceler içine Methodlarımızı yazalım,
+- ![Ekran Görüntüsü (279)](https://github.com/user-attachments/assets/b883b0a8-0661-472a-a893-58a4f2717ab6)
+- categoryService sınıfımız ICategoryServiceden miras alıyor.
+- MongoDb nin Constructor ı biraz farklı olduğu için size burayı detaylı bir şekilde anlatmak istiyorum.
+  -Ctor yazıp tab tuşuna basıyoruz ve countructoru  mauel olarak yazıyoruz.
+  
+- _categoryCollection: Bu, MongoDB veritabanındaki Category koleksiyonuna (collection) karşılık gelen koleksiyondur. Bu koleksiyon üzerinden verileri almak, eklemek, güncellemek gibi işlemler yapılacaktır.
+- MongoClient: MongoDB veritabanına bağlanmak için kullanılan bir sınıftır. ConnectionString ise MongoDB'ye bağlanmak için kullanılan bağlantı dizesidir. Bu bağlantı dizesi IDataBaseSettings arayüzünden alınır.
+- var database GetDatabase(): MongoDB istemcisine (client) bağlı bir veritabanı alır. Burada veritabanının adı, IDataBaseSettings'ten alınan DatabaseName özelliği ile sağlanır.
+- categoryCollection GetCollection<T>(): Bu metot, belirli bir koleksiyonu (collection) almak için kullanılır. Burada _categoryCollection, MongoDB'deki Category koleksiyonuna erişir. Koleksiyonun adı, CategoryCollectionName özelliği ile sağlanır.
+- Category, veritabanında saklanan belgelerin (documents) veri modelini temsil eder. Yani her kategori belgesinin sahip olacağı alanları (örneğin, Id, Name, vb.) içerir.
+  ### -Özetle
+  -Yaptğımızı özetliyecek olursak eğer;
+1. MongoDB'ye Bağlanma: MongoClient ile veritabanına bağlanır.
+2. Veritabanı Seçimi: GetDatabase() ile veritabanını alır.
+3. Category Koleksiyonunu Seçme: GetCollection<Category>() ile ilgili koleksiyon seçilir.
+4. IDatabaseSettingsi neden yazdığımızı şuan daha iyi anlaşıldığını düşünüyorum.
+## -Methodlarımızın içlerini dolduralım 
+-![Ekran Görüntüsü (281)](https://github.com/user-attachments/assets/69688c93-72ff-4f30-8cbf-af5712a08fa8)
+-MongoDb nin methodları  bu şekilde CRUD methodlar üzerinden göstermeye anlatmaya çalıştım.  
+## Program.cs 
+![Ekran Görüntüsü (280)](https://github.com/user-attachments/assets/813557fb-d5ec-4213-bf82-7fd4b0795e08) 
+-Program.cs tarafında config ayarları bu şekilde.  
+
+## Okuduğunuz için Teşekür ederim. Elimden geldiğince açıklamak ve anlatmak istedim.
+
+
+## MongoDb Google Cloud stroge Projesi 
+### -Proje Hakkında 
+- Bu projede Resimlerimiz MongoDb üzerine değilde Google Cloud stroge kaydedilmiştir ve Google Cloud stroge 'a kayıt edilen fotoğrafların yolu ise MongoDbye kayıt edilmiştir. Projede Ürünlerin Pdfi ve Müşteri bilgilerinin excelle indirme seçenekleri vardır.
+## -Projede Kullanılan Teknolojiler ve Kütüphaneler 
+- AutoMapper
+- ClosedXML(excell şeklinde indirmek için)
+- İTEXTSHARP(Pdfe indirmek için)
+- MongoDB
+- MongoDb.Bson
+- MongoDb.driver
+- Google Cloud Storge
+  ### -Proje Fotoğrafları
+#### -Category    
+![Ekran Görüntüsü (253) - Kopya](https://github.com/user-attachments/assets/da2c2699-12f9-44af-8297-c494fa939d1e)
+- Id yi bilerek bu şekilde bıraktım çünkü [BsonRepresentation(BsonType.ObjectId)]: string formatda olduğunu göstermek için.
+  ## Müşteriler Ve Excell Formatında indirme
+ - ![Ekran Görüntüsü (254)](https://github.com/user-attachments/assets/b91b83de-c215-4f64-bd6e-a689929205d2)
+- ![Ekran Görüntüsü (257)](https://github.com/user-attachments/assets/28bd400b-6871-4741-bdfb-cc7bea85763a)
+#### -Müşteriler ve PDF Formatında İndirme 
+![Ekran Görüntüsü (258)](https://github.com/user-attachments/assets/e46a1031-7a1d-4837-b182-443fdca296ba)
+![Ekran Görüntüsü (259)](https://github.com/user-attachments/assets/37d8ba84-d521-4c88-8686-96181860ce12)
+![Ekran Görüntüsü (262)](https://github.com/user-attachments/assets/57ec85f9-70ba-44b2-a408-b299d800d427)
+###  Google Cloud stroge 
+-![Ekran Görüntüsü (264)](https://github.com/user-attachments/assets/249042d3-12f3-496b-ad1a-b525379b2a2a)
+![Ekran Görüntüsü (263)](https://github.com/user-attachments/assets/51f7c36a-0094-4607-9525-0648909498c8)
