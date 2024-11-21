@@ -1,6 +1,6 @@
-﻿@model CreateProductDto
+﻿@model GetByIdProductDto
 @{
-    ViewData["Title"] = "CreatProduct";
+    ViewData["Title"] = "UpdateProduct";
     Layout = "~/Views/Shared/_MongoLayout.cshtml";
 }
 
@@ -25,11 +25,10 @@
                 <label>Kategori Seçiniz</label>
                 @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.Categories, "Seçiniz...", new { @class = "form-control" })
                 <br />
-                 <label>Ürün Resmi</label>
+                <label>Ürün Resmi</label>
                 <input type="file" class="form-control border" asp-for="ImageUrl" />
                 <br />
-                <input asp-for="SavedUrl" type="hidden" class="form-control" />
-                <input asp-for="SavedFileName" type="hidden" class="form-control" />
+             
                 <br />
                 <div class="form-group">
                     <button type="submit" class="btn btn-light btn-round px-5"><i class="icon-lock"></i>Ürünü Ekle</button>

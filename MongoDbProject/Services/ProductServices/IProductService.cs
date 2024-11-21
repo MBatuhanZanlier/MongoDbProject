@@ -8,7 +8,8 @@ namespace MongoDbProject.Services.ProductServices
         Task<GetByIdProductDto> GetByIdProductAsync(string id); 
         Task DeleteAsync(string id);
         Task UpdateProductAsync(UpdateProductDto productDto); 
-        Task CreateProductAsync(CreateProductDto productDto); 
-
+        Task CreateProductAsync(CreateProductDto productDto);
+        Task<List<ResultProductsWithCategoryDto>> GetProductsWithCategoryAsync();
+        
     }
 }

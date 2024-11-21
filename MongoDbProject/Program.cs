@@ -1,6 +1,8 @@
 using Microsoft.Extensions.Options;
 using MongoDbProject.Services.CategoryServices;
 using MongoDbProject.Services.CustomerServices;
+using MongoDbProject.Services.GoogleCloud;
+using MongoDbProject.Services.ProductServices;
 using MongoDbProject.Settings;
 using System.Reflection;
 
@@ -10,10 +12,14 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddScoped<ICategoryService,CategoryService>(); 
 builder.Services.AddScoped<ICustomerService,CustomerService>(); 
+builder.Services.AddScoped<IProductService,ProductService>(); 
 
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly()); //AUTOMAPER CONFÝG
 
 builder.Services.Configure<DatabaseSettings>(builder.Configuration.GetSection("DatabaseSettings")); //Veri tabaný baðlantý Adresi
+
+builder.Services.Configure<GCSConfigOptions>(builder.Configuration);
+builder.Services.AddSingleton<ICloudStorageService, CloudStorageService>(); 
 
 builder.Services.AddScoped<IDatabaseDateSettings>(sp =>
 {
